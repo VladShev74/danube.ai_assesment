@@ -12,10 +12,26 @@ INPUT_FILE = Path("work_fields.json")
 OUTPUT_FILE = Path("correlation_matrix.json")
 EXPECTED_FIELD_COUNT = 180
 EMBEDDING_MODEL = "paraphrase-multilingual-MiniLM-L12-v2"
+# Signal fusion weights
+W_SEMANTIC = 0.5
+W_MORPHOLOGICAL = 0.25
+W_NEIGHBORHOOD = 0.25
+
+# Value 10 is reserved for self-correlation (diagonal), so we select
+# the top 9 neighbors per field, ranked 9 (most similar) down to 1.
+TOP_K = 9
 
 
 def load_work_fields(path: Path) -> list[dict]:
-    """Load and validate the work fields JSON file."""
+    """Load and validate the work fields JSON file.
+
+    Args:
+        path: Path to the JSON file containing work field definitions.
+
+    Returns:
+        List of work field dicts, each with keys: code, nameDe, nameEn,
+        correlationMatrixId.
+    """
     with open(path, "r", encoding="utf-8") as f:
         fields = json.load(f)
 
@@ -37,7 +53,11 @@ def load_work_fields(path: Path) -> list[dict]:
 
 
 def print_data_summary(fields: list[dict]) -> None:
-    """Print a summary of the loaded work fields for exploration."""
+    """Print a summary of the loaded work fields for exploration.
+
+    Args:
+        fields: List of work field dicts as returned by load_work_fields().
+    """
     print(f"Loaded {len(fields)} work fields.\n")
 
     print("Sample entries:")
@@ -71,6 +91,13 @@ def compute_semantic_similarity(fields: list[dict]) -> np.ndarray:
 
     Input text format: "nameDe / nameEn" to leverage both languages,
     giving the model more semantic context than either language alone.
+
+    Args:
+        fields: List of work field dicts with 'nameDe' and 'nameEn' keys.
+
+    Returns:
+        Symmetric similarity matrix of shape (N, N) with cosine similarities
+        in [-1, 1], where N = len(fields).
     """
     print(f"  Model: {EMBEDDING_MODEL}")
 
@@ -116,6 +143,13 @@ def compute_morphological_similarity(fields: list[dict]) -> np.ndarray:
     Word-level TF-IDF was tested but produced near-zero similarity
     because field names have too few unique words (2-6 each).
     Character n-grams overcome this by operating at sub-word granularity.
+
+    Args:
+        fields: List of work field dicts with 'nameDe' and 'nameEn' keys.
+
+    Returns:
+        Symmetric similarity matrix of shape (N, N) with cosine similarities
+        in [0, 1], where N = len(fields).
     """
     print("\n\nComputing morphological similarity (character n-gram TF-IDF)")
 
@@ -167,9 +201,14 @@ def compute_neighborhood_similarity(
     the semantic similarity matrix.
 
     Args:
-        fields: list of work field dicts
-        sim_semantic: precomputed semantic similarity matrix (180x180)
-        k: neighborhood size (default: 14 ≈ √180, a common heuristic for k-NN neighborhood size)
+        fields: List of work field dicts.
+        sim_semantic: Precomputed semantic similarity matrix of shape (N, N).
+        k: Neighborhood size. Default 14 ≈ √180, a common heuristic for
+            k-NN neighborhood size.
+
+    Returns:
+        Symmetric similarity matrix of shape (N, N) with Jaccard similarities
+        in [0, 1], where N = len(fields).
     """
     print(f"Computing neighborhood overlap similarity (k={k})")
 
@@ -213,6 +252,139 @@ def compute_neighborhood_similarity(
     return sim_matrix
 
 
+def normalize_matrix(matrix: np.ndarray) -> np.ndarray:
+    """Min-max normalize a similarity matrix to [0, 1].
+
+    Each signal has a different native range (cosine: [-0.13, 1.0],
+    Jaccard: [0, 1], char n-gram cosine: [0, 1]). Normalization
+    ensures they contribute proportionally according to their weights.
+
+    Args:
+        matrix: A 2-D numpy similarity matrix.
+
+    Returns:
+        Normalized matrix with values in [0, 1]. Returns zeros if all
+        values are identical (max == min).
+    """
+    min_val = matrix.min()
+    max_val = matrix.max()
+    if max_val == min_val:
+        return np.zeros_like(matrix)
+    return (matrix - min_val) / (max_val - min_val)
+
+
+def build_correlation_entries(
+    fields: list[dict], sim_combined: np.ndarray
+) -> list[dict]:
+    """
+    Build the output entries from the fused similarity matrix.
+
+    For each field:
+      1. Find the top 9 most similar fields (excluding self)
+      2. Assign integer rank: most similar = 9, 9th = 1
+        (value 10 is reserved for self-correlation on the diagonal)
+      3. Store in upper triangle form (code1 < code2 lexicographically)
+
+    When a pair appears from both sides (A's top-9 includes B, and
+    B's top-9 includes A), we keep the higher rank value to avoid
+    losing strong relationships.
+
+    Args:
+        fields: List of work field dicts with 'correlationMatrixId' key.
+        sim_combined: Fused similarity matrix of shape (N, N).
+
+    Returns:
+        List of entry dicts, each with keys: code1, code2, value (int 1-10),
+        score (float). Includes N diagonal entries (value=10) and up to
+        N * TOP_K non-diagonal entries (after deduplication).
+    """
+    n = len(fields)
+    matrix_ids = [f["correlationMatrixId"] for f in fields]
+    entries = []
+
+    # Diagonal: self-correlation = 10
+    for i in range(n):
+        entries.append({
+            "code1": matrix_ids[i],
+            "code2": matrix_ids[i],
+            "value": 10,
+            "score": 1.0,
+        })
+
+    # For each field, find top 10 most similar
+    pair_values: dict[tuple[str, str], dict] = {}
+
+    for i in range(n):
+        scores = sim_combined[i].copy()
+        scores[i] = -1  # exclude self
+        top_indices = np.argsort(scores)[-TOP_K:][::-1]
+
+        for rank, j in enumerate(top_indices):
+            value = TOP_K - rank  # 9, 8, 7, ..., 1
+
+            # Upper triangle: code1 < code2
+            pair = tuple(sorted([matrix_ids[i], matrix_ids[j]]))
+
+            # Keep the higher value when pair appears from both sides
+            if pair not in pair_values or value > pair_values[pair]["value"]:
+                pair_values[pair] = {
+                    "code1": pair[0],
+                    "code2": pair[1],
+                    "value": value,
+                    "score": round(float(scores[j]), 4),
+                }
+
+    entries.extend(pair_values.values())
+    return entries
+
+
+def validate_output(entries: list[dict], field_count: int) -> None:
+    """
+    Verify the output satisfies all four required matrix properties:
+      1. Symmetry: upper triangle only, no duplicate pairs
+      2. Sparsity: only top 10 per field included (satisfied by construction in build_correlation_entries function)
+      3. Diagonal: self-correlation present for every field, value = 10
+      4. Value range: integer ranks from 1 to 10
+
+    Args:
+        entries: List of correlation entry dicts as returned by
+            build_correlation_entries().
+        field_count: Expected number of distinct work fields (for diagonal
+            entry count validation).
+
+    Raises:
+        AssertionError: If any matrix property is violated.
+    """
+    print("Validating output:")
+
+    # Property 1: Symmetry — upper triangle only, no duplicates
+    non_diag = [e for e in entries if e["code1"] != e["code2"]]
+    for e in non_diag:
+        assert e["code1"] < e["code2"], (
+            f"Not upper triangle: {e['code1']} >= {e['code2']}"
+        )
+    pairs = [(e["code1"], e["code2"]) for e in non_diag]
+    assert len(pairs) == len(set(pairs)), "Duplicate pairs found!"
+    print(f"  Non-diagonal entries: {len(non_diag)} (all upper triangle, no duplicates)")
+
+    # Property 3: Diagonal
+    diag = [e for e in entries if e["code1"] == e["code2"]]
+    assert len(diag) == field_count, (
+        f"Expected {field_count} diagonal entries, got {len(diag)}"
+    )
+    assert all(e["value"] == 10 for e in diag), "All diagonal values must be 10"
+    print(f"  Diagonal entries: {len(diag)} (all value=10)")
+
+    # Property 4: Value range
+    for e in entries:
+        assert isinstance(e["value"], int), f"Value must be int: {e['value']}"
+        assert 1 <= e["value"] <= 10, f"Value out of range: {e['value']}"
+    print("  All values are integers in [1, 10]")
+
+    print(f"  Total entries: {len(entries)}")
+    print("  All validations passed.\n")
+
+
 # ──────────────────────────────────────────────
 # Main
 # ──────────────────────────────────────────────
@@ -233,6 +405,49 @@ def main() -> None:
     sim_semantic = compute_semantic_similarity(fields)
     sim_morphological = compute_morphological_similarity(fields)
     sim_neighborhood = compute_neighborhood_similarity(fields, sim_semantic)
+
+    # Step 3: Fuse signals
+    print("=" * 70)
+    print("Fusing similarity signals")
+    print("=" * 70 + "\n")
+    print(f"  Weights: semantic={W_SEMANTIC}, morphological={W_MORPHOLOGICAL}, "
+          f"neighborhood={W_NEIGHBORHOOD}")
+
+    sim_combined = (
+        W_SEMANTIC * normalize_matrix(sim_semantic)
+        + W_MORPHOLOGICAL * normalize_matrix(sim_morphological)
+        + W_NEIGHBORHOOD * normalize_matrix(sim_neighborhood)
+    )
+    print(f"  Combined matrix range: [{sim_combined.min():.4f}, {sim_combined.max():.4f}]")
+
+    # Spot check fused results
+    print("\n  Check top 5 most similar for sample fields (fused):")
+    for idx in [0, 4, 8]:
+        scores = sim_combined[idx].copy()
+        scores[idx] = -1
+        top5 = np.argsort(scores)[-5:][::-1]
+        field_name = fields[idx]["nameEn"]
+        neighbors = ", ".join(
+            f"{fields[j]['nameEn']} ({scores[j]:.3f})" for j in top5
+        )
+        print(f"    {field_name} → {neighbors}")
+    print()
+
+    # Step 4: Build ranked entries
+    print("=" * 70)
+    print("Building correlation entries")
+    print("=" * 70 + "\n")
+
+    entries = build_correlation_entries(fields, sim_combined)
+
+    # Step 5: Validate
+    validate_output(entries, EXPECTED_FIELD_COUNT)
+
+    # Step 6: Export
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(entries, f, indent=2, ensure_ascii=False)
+    print(f"Output written to {OUTPUT_FILE}")
+    print(f"Total entries: {len(entries)}")
 
 
 if __name__ == "__main__":
