@@ -1,0 +1,1082 @@
+ [
+  {
+    "code": "tele",
+    "nameDe": "Telekommunikation",
+    "nameEn": "Telecomunication",
+    "correlationMatrixId": "w_tele"
+  },
+  {
+    "code": "sale",
+    "nameDe": "Vertrieb allgemein",
+    "nameEn": "Sales/Presale",
+    "correlationMatrixId": "w_sale"
+  },
+  {
+    "code": "impo",
+    "nameDe": "Import",
+    "nameEn": "Import",
+    "correlationMatrixId": "w_impo"
+  },
+  {
+    "code": "whkus",
+    "nameDe": "Kundenschulung",
+    "nameEn": "Customer Training",
+    "correlationMatrixId": "w_whkus"
+  },
+  {
+    "code": "pers",
+    "nameDe": "Personalwesen",
+    "nameEn": "Human Resources",
+    "correlationMatrixId": "w_pers"
+  },
+  {
+    "code": "info",
+    "nameDe": "Information Engineering",
+    "nameEn": "Information Engineering",
+    "correlationMatrixId": "w_info"
+  },
+  {
+    "code": "medas",
+    "nameDe": "Medizinische Assistenz",
+    "nameEn": "Medical Assistance",
+    "correlationMatrixId": "w_medas"
+  },
+  {
+    "code": "doc",
+    "nameDe": "Medizinwissenschaft",
+    "nameEn": "Medical Science",
+    "correlationMatrixId": "w_doc"
+  },
+  {
+    "code": "sani",
+    "nameDe": "Sanitäts-/Ambulanzberufe",
+    "nameEn": "Live-Saving Service",
+    "correlationMatrixId": "w_sani"
+  },
+  {
+    "code": "wood",
+    "nameDe": "Holzbearbeitung",
+    "nameEn": "Wood Working",
+    "correlationMatrixId": "w_wood"
+  },
+  {
+    "code": "payr",
+    "nameDe": "Lohn und Gehalt",
+    "nameEn": "Earnings and Sallary",
+    "correlationMatrixId": "w_payr"
+  },
+  {
+    "code": "cc",
+    "nameDe": "Helpdesk/Technischer Support",
+    "nameEn": "Helpdesk/Technical Support",
+    "correlationMatrixId": "w_cc"
+  },
+  {
+    "code": "mare",
+    "nameDe": "Marktforschung/Marktanalyse",
+    "nameEn": "Market Research",
+    "correlationMatrixId": "w_mare"
+  },
+  {
+    "code": "mate",
+    "nameDe": "Baustoff-Technik",
+    "nameEn": "Building Material",
+    "correlationMatrixId": "w_mate"
+  },
+  {
+    "code": "adve",
+    "nameDe": "Werbung",
+    "nameEn": "Advertising",
+    "correlationMatrixId": "w_adve"
+  },
+  {
+    "code": "asset",
+    "nameDe": "Anlageberatung/Vermögensberatung",
+    "nameEn": "Asset Management",
+    "correlationMatrixId": "w_asset"
+  },
+  {
+    "code": "safety",
+    "nameDe": "Arbeitssicherheit",
+    "nameEn": "Safety Engineering",
+    "correlationMatrixId": "w_safety"
+  },
+  {
+    "code": "web",
+    "nameDe": "Digitaldesign",
+    "nameEn": "Digital Design",
+    "correlationMatrixId": "w_web"
+  },
+  {
+    "code": "retai",
+    "nameDe": "Einzelhandel",
+    "nameEn": "Retail Sales",
+    "correlationMatrixId": "w_retai"
+  },
+  {
+    "code": "room",
+    "nameDe": "Raumgestaltung",
+    "nameEn": "Interior Disign",
+    "correlationMatrixId": "w_room"
+  },
+  {
+    "code": "frei",
+    "nameDe": "Verkehrs- und Transportwesen",
+    "nameEn": "Transportation and Shipping",
+    "correlationMatrixId": "w_frei"
+  },
+  {
+    "code": "mash",
+    "nameDe": "Maschinenbau",
+    "nameEn": "Mechanical Engineering",
+    "correlationMatrixId": "w_mash"
+  },
+  {
+    "code": "sain",
+    "nameDe": "Vertrieb Innendienst",
+    "nameEn": "Sales Indoor Service",
+    "correlationMatrixId": "w_sain"
+  },
+  {
+    "code": "itqm",
+    "nameDe": "IT-Qualitätsmanagement",
+    "nameEn": "IT Quality Management",
+    "correlationMatrixId": "w_itqm"
+  },
+  {
+    "code": "faben",
+    "nameDe": "Verfahrenstechnik-Ingenieure/MRT",
+    "nameEn": "Process Engineerung",
+    "correlationMatrixId": "w_faben"
+  },
+  {
+    "code": "sysa",
+    "nameDe": "Systemanalyse",
+    "nameEn": "System Analysis",
+    "correlationMatrixId": "w_sysa"
+  },
+  {
+    "code": "modes",
+    "nameDe": "Mode & Schmuckdesign",
+    "nameEn": "Fashion/Attire Design",
+    "correlationMatrixId": "w_modes"
+  },
+  {
+    "code": "metal",
+    "nameDe": "Metallverarbeitung",
+    "nameEn": "Metal Machining",
+    "correlationMatrixId": "w_metal"
+  },
+  {
+    "code": "con",
+    "nameDe": "Consulting",
+    "nameEn": "Consulting",
+    "correlationMatrixId": "w_con"
+  },
+  {
+    "code": "illumi",
+    "nameDe": "Reklameherstellung",
+    "nameEn": "Reklameherstellung",
+    "correlationMatrixId": "w_illumi"
+  },
+  {
+    "code": "arch",
+    "nameDe": "Archivierung",
+    "nameEn": "Archiving",
+    "correlationMatrixId": "w_arch"
+  },
+  {
+    "code": "trans",
+    "nameDe": "Übersetzung",
+    "nameEn": "Translation",
+    "correlationMatrixId": "w_trans"
+  },
+  {
+    "code": "propur",
+    "nameDe": "Projekteinkauf",
+    "nameEn": "Project Purchase",
+    "correlationMatrixId": "w_propur"
+  },
+  {
+    "code": "film",
+    "nameDe": "Film/TV/Radio",
+    "nameEn": "Film/TV/Broadcasting",
+    "correlationMatrixId": "w_film"
+  },
+  {
+    "code": "scm",
+    "nameDe": "Supply Chain Management",
+    "nameEn": "Supply Chain Management",
+    "correlationMatrixId": "w_scm"
+  },
+  {
+    "code": "beaut",
+    "nameDe": "Frisör/Schönheit",
+    "nameEn": "Hairdressing/Beauty/Wellness",
+    "correlationMatrixId": "w_beaut"
+  },
+  {
+    "code": "autom",
+    "nameDe": "KFZ-Mechanik",
+    "nameEn": "Car Mechanic",
+    "correlationMatrixId": "w_autom"
+  },
+  {
+    "code": "clean",
+    "nameDe": "Reinigung",
+    "nameEn": "Cleaning",
+    "correlationMatrixId": "w_clean"
+  },
+  {
+    "code": "org",
+    "nameDe": "Betriebsorganisation",
+    "nameEn": "Company Organisation",
+    "correlationMatrixId": "w_org"
+  },
+  {
+    "code": "ther",
+    "nameDe": "Therapeutische Berufe",
+    "nameEn": "Therapeutic Professions",
+    "correlationMatrixId": "w_ther"
+  },
+  {
+    "code": "heet",
+    "nameDe": "Heizung/Klima/Lüftung",
+    "nameEn": "Heating/Climate",
+    "correlationMatrixId": "w_heet"
+  },
+  {
+    "code": "tred",
+    "nameDe": "Technische Redaktion",
+    "nameEn": "Technical Writer",
+    "correlationMatrixId": "w_tred"
+  },
+  {
+    "code": "nwa",
+    "nameDe": "Netzwerkadministration und Sicherheit",
+    "nameEn": "Network Administration",
+    "correlationMatrixId": "w_nwa"
+  },
+  {
+    "code": "phot",
+    "nameDe": "Fotografie",
+    "nameEn": "Photography",
+    "correlationMatrixId": "w_phot"
+  },
+  {
+    "code": "envir",
+    "nameDe": "Umweltschutz/Naturschutz",
+    "nameEn": "Environment Protection",
+    "correlationMatrixId": "w_envir"
+  },
+  {
+    "code": "offi",
+    "nameDe": "Büromanagement",
+    "nameEn": "Office Management",
+    "correlationMatrixId": "w_offi"
+  },
+  {
+    "code": "nurse",
+    "nameDe": "Pflegeberufe",
+    "nameEn": "Nursing",
+    "correlationMatrixId": "w_nurse"
+  },
+  {
+    "code": "ar",
+    "nameDe": "System-/Softwarearchitektur",
+    "nameEn": "IT Architecture",
+    "correlationMatrixId": "w_ar"
+  },
+  {
+    "code": "edito",
+    "nameDe": "Redaktion",
+    "nameEn": "Editorial",
+    "correlationMatrixId": "w_edito"
+  },
+  {
+    "code": "tax",
+    "nameDe": "Steuerberatung",
+    "nameEn": "Tax Advice",
+    "correlationMatrixId": "w_tax"
+  },
+  {
+    "code": "purch",
+    "nameDe": "Einkauf",
+    "nameEn": "Purchase",
+    "correlationMatrixId": "w_purch"
+  },
+  {
+    "code": "veter",
+    "nameDe": "Veterinärmedizin",
+    "nameEn": "Veterinary Medicine",
+    "correlationMatrixId": "w_veter"
+  },
+  {
+    "code": "natur",
+    "nameDe": "Naturwissenschaft",
+    "nameEn": "Natural Science",
+    "correlationMatrixId": "w_natur"
+  },
+  {
+    "code": "keyacc",
+    "nameDe": "Key Account Management",
+    "nameEn": "Key Account Management",
+    "correlationMatrixId": "w_keyacc"
+  },
+  {
+    "code": "bestatt",
+    "nameDe": "Bestattung",
+    "nameEn": "Funeral",
+    "correlationMatrixId": "w_bestatt"
+  },
+  {
+    "code": "insum",
+    "nameDe": "Versicherungsmathematik",
+    "nameEn": "Insurance Mathematics",
+    "correlationMatrixId": "w_insum"
+  },
+  {
+    "code": "elec",
+    "nameDe": "Elektrotechnik/Elektronik",
+    "nameEn": "Electrical Engineering",
+    "correlationMatrixId": "w_elec"
+  },
+  {
+    "code": "defe",
+    "nameDe": "Bundeswehr",
+    "nameEn": "Armed Forces",
+    "correlationMatrixId": "w_defe"
+  },
+  {
+    "code": "hrdev",
+    "nameDe": "Personalentwicklung",
+    "nameEn": "Human Ressource Development",
+    "correlationMatrixId": "w_hrdev"
+  },
+  {
+    "code": "medic",
+    "nameDe": "Ärzte/Mediziner",
+    "nameEn": "Physicians",
+    "correlationMatrixId": "w_medic"
+  },
+  {
+    "code": "agri",
+    "nameDe": "Landwirtschaft/Forstwirtschaft/Gartenbau",
+    "nameEn": "Agriculture/Forestry/Gardening",
+    "correlationMatrixId": "w_agri"
+  },
+  {
+    "code": "synth",
+    "nameDe": "Kunststofftechnik",
+    "nameEn": "Plastics Engineering",
+    "correlationMatrixId": "w_synth"
+  },
+  {
+    "code": "auto",
+    "nameDe": "Automotive/Fahrzeugbau",
+    "nameEn": "Automotive",
+    "correlationMatrixId": "w_auto"
+  },
+  {
+    "code": "dent",
+    "nameDe": "Zahntechnik",
+    "nameEn": "Dental Technique",
+    "correlationMatrixId": "w_dent"
+  },
+  {
+    "code": "math",
+    "nameDe": "Mathematik/Statistik",
+    "nameEn": "Mathematics/Statistics",
+    "correlationMatrixId": "w_math"
+  },
+  {
+    "code": "phar",
+    "nameDe": "Pharmazie",
+    "nameEn": "Pharmacy",
+    "correlationMatrixId": "w_phar"
+  },
+  {
+    "code": "presa",
+    "nameDe": "Presale/Postsale Support",
+    "nameEn": "Presale/Postsale Support",
+    "correlationMatrixId": "w_presa"
+  },
+  {
+    "code": "bio",
+    "nameDe": "Biologie",
+    "nameEn": "Biology",
+    "correlationMatrixId": "w_bio"
+  },
+  {
+    "code": "admin",
+    "nameDe": "Büroassistenz/Büroadministration",
+    "nameEn": "Office-Administration",
+    "correlationMatrixId": "w_admin"
+  },
+  {
+    "code": "chem",
+    "nameDe": "Chemie",
+    "nameEn": "Chemistry",
+    "correlationMatrixId": "w_chem"
+  },
+  {
+    "code": "archi",
+    "nameDe": "Bauarchitektur",
+    "nameEn": "Building Architecture",
+    "correlationMatrixId": "w_archi"
+  },
+  {
+    "code": "rece",
+    "nameDe": "Rezeption/Empfang",
+    "nameEn": "Reception",
+    "correlationMatrixId": "w_rece"
+  },
+  {
+    "code": "pera",
+    "nameDe": "Personalberatung",
+    "nameEn": "HR Consulting",
+    "correlationMatrixId": "w_pera"
+  },
+  {
+    "code": "muse",
+    "nameDe": "Museum & Galerie",
+    "nameEn": "Museum/Gallery",
+    "correlationMatrixId": "w_muse"
+  },
+  {
+    "code": "upstream",
+    "nameDe": "Erdöl-/Erdgastechnik",
+    "nameEn": "Upstream Engineering",
+    "correlationMatrixId": "w_upstream"
+  },
+  {
+    "code": "ebus",
+    "nameDe": "eBusiness/eCommerce",
+    "nameEn": "eBusiness/eCommerce",
+    "correlationMatrixId": "w_ebus"
+  },
+  {
+    "code": "recru",
+    "nameDe": "Personalbeschaffung",
+    "nameEn": "Recruiting",
+    "correlationMatrixId": "w_recru"
+  },
+  {
+    "code": "top",
+    "nameDe": "Top Management/Unternehmensführung",
+    "nameEn": "Top Management",
+    "correlationMatrixId": "w_top"
+  },
+  {
+    "code": "notar",
+    "nameDe": "Notariatswesen",
+    "nameEn": "Notary's Office",
+    "correlationMatrixId": "w_notar"
+  },
+  {
+    "code": "itman",
+    "nameDe": "IT-Leitung",
+    "nameEn": "Head of IT",
+    "correlationMatrixId": "w_itman"
+  },
+  {
+    "code": "tour",
+    "nameDe": "Reiseverkehr & Tourismus",
+    "nameEn": "Tourism",
+    "correlationMatrixId": "w_tour"
+  },
+  {
+    "code": "expo",
+    "nameDe": "Export",
+    "nameEn": "Export",
+    "correlationMatrixId": "w_expo"
+  },
+  {
+    "code": "techpur",
+    "nameDe": "Technischer Einkauf",
+    "nameEn": "Procurement Engineering",
+    "correlationMatrixId": "w_techpur"
+  },
+  {
+    "code": "home",
+    "nameDe": "Haushaltsnahe Dienstleistungen",
+    "nameEn": "Home Services",
+    "correlationMatrixId": "w_home"
+  },
+  {
+    "code": "event",
+    "nameDe": "Event Management",
+    "nameEn": "Event Management",
+    "correlationMatrixId": "w_event"
+  },
+  {
+    "code": "cad",
+    "nameDe": "CAD/Technischer Zeichner",
+    "nameEn": "CAD/Design Draftsmen",
+    "correlationMatrixId": "w_cad"
+  },
+  {
+    "code": "cont",
+    "nameDe": "Controlling",
+    "nameEn": "Controlling",
+    "correlationMatrixId": "w_cont"
+  },
+  {
+    "code": "sama",
+    "nameDe": "Vertriebsleitung",
+    "nameEn": "Sales Management",
+    "correlationMatrixId": "w_sama"
+  },
+  {
+    "code": "seng",
+    "nameDe": "Software-Engineering",
+    "nameEn": "Software Engineering",
+    "correlationMatrixId": "w_seng"
+  },
+  {
+    "code": "educ",
+    "nameDe": "Schulausbildung",
+    "nameEn": "School Education",
+    "correlationMatrixId": "w_educ"
+  },
+  {
+    "code": "house",
+    "nameDe": "Hausverwaltung",
+    "nameEn": "Property Management",
+    "correlationMatrixId": "w_house"
+  },
+  {
+    "code": "itpm",
+    "nameDe": "IT-Projektmanagement",
+    "nameEn": "IT Project Management",
+    "correlationMatrixId": "w_itpm"
+  },
+  {
+    "code": "safo",
+    "nameDe": "Vertrieb Außendienst",
+    "nameEn": "Sales Force/Field Service",
+    "correlationMatrixId": "w_safo"
+  },
+  {
+    "code": "maint",
+    "nameDe": "Anwendungsbetreuung",
+    "nameEn": "Application Support",
+    "correlationMatrixId": "w_maint"
+  },
+  {
+    "code": "whuni",
+    "nameDe": "Universitätslehrkräfte",
+    "nameEn": "University Academics",
+    "correlationMatrixId": "w_whuni"
+  },
+  {
+    "code": "space",
+    "nameDe": "Luft- und Raumfahrttechnik",
+    "nameEn": "Aviation",
+    "correlationMatrixId": "w_space"
+  },
+  {
+    "code": "comm",
+    "nameDe": "Unternehmenskommunikation",
+    "nameEn": "Corporate Communication",
+    "correlationMatrixId": "w_comm"
+  },
+  {
+    "code": "civil",
+    "nameDe": "Bauingenieurwesen",
+    "nameEn": "Civil Engineering",
+    "correlationMatrixId": "w_civil"
+  },
+  {
+    "code": "prod",
+    "nameDe": "Produktmanagement",
+    "nameEn": "Product Management",
+    "correlationMatrixId": "w_prod"
+  },
+  {
+    "code": "hote",
+    "nameDe": "Hotel- und Gaststättengewerbe",
+    "nameEn": "Hotel/Catering",
+    "correlationMatrixId": "w_hote"
+  },
+  {
+    "code": "inves",
+    "nameDe": "Investment Management",
+    "nameEn": "Investment Management",
+    "correlationMatrixId": "w_inves"
+  },
+  {
+    "code": "busi",
+    "nameDe": "Sachbearbeitung",
+    "nameEn": "Business Processing",
+    "correlationMatrixId": "w_busi"
+  },
+  {
+    "code": "hand",
+    "nameDe": "Kunsthandwerk",
+    "nameEn": "Artists/Performers",
+    "correlationMatrixId": "w_hand"
+  },
+  {
+    "code": "monta",
+    "nameDe": "Montage",
+    "nameEn": "Assembling",
+    "correlationMatrixId": "w_monta"
+  },
+  {
+    "code": "hospital",
+    "nameDe": "Krankenhausverwaltung",
+    "nameEn": "Hospital Management",
+    "correlationMatrixId": "w_hospital"
+  },
+  {
+    "code": "jour",
+    "nameDe": "Journalismus",
+    "nameEn": "Journalism",
+    "correlationMatrixId": "w_jour"
+  },
+  {
+    "code": "munic",
+    "nameDe": "Öffentlicher Dienst/Kommunalwesen",
+    "nameEn": "Municipal Services",
+    "correlationMatrixId": "w_munic"
+  },
+  {
+    "code": "faci",
+    "nameDe": "Facility-Management",
+    "nameEn": "Facility Management",
+    "correlationMatrixId": "w_faci"
+  },
+  {
+    "code": "desig",
+    "nameDe": "Industriedesign",
+    "nameEn": "Industrial Design",
+    "correlationMatrixId": "w_desig"
+  },
+  {
+    "code": "rev",
+    "nameDe": "Revision",
+    "nameEn": "Revision",
+    "correlationMatrixId": "w_rev"
+  },
+  {
+    "code": "dba",
+    "nameDe": "Datenbankadministration",
+    "nameEn": "Database Administration",
+    "correlationMatrixId": "w_dba"
+  },
+  {
+    "code": "book",
+    "nameDe": "Buchhaltung",
+    "nameEn": "Accounting",
+    "correlationMatrixId": "w_book"
+  },
+  {
+    "code": "rese",
+    "nameDe": "Forschung & Entwicklung",
+    "nameEn": "Research & Development",
+    "correlationMatrixId": "w_rese"
+  },
+  {
+    "code": "street",
+    "nameDe": "Straßenbau",
+    "nameEn": "Road Building",
+    "correlationMatrixId": "w_street"
+  },
+  {
+    "code": "craft",
+    "nameDe": "Bauhandwerk",
+    "nameEn": "Building Craft",
+    "correlationMatrixId": "w_craft"
+  },
+  {
+    "code": "statics",
+    "nameDe": "Baustatik",
+    "nameEn": "Building Mechanics",
+    "correlationMatrixId": "w_statics"
+  },
+  {
+    "code": "siteman",
+    "nameDe": "Bauleitung",
+    "nameEn": "Site Manager",
+    "correlationMatrixId": "w_siteman"
+  },
+  {
+    "code": "judi",
+    "nameDe": "Rechtswesen",
+    "nameEn": "Judiciary",
+    "correlationMatrixId": "w_judi"
+  },
+  {
+    "code": "pr",
+    "nameDe": "Public Relations",
+    "nameEn": "Public Relations",
+    "correlationMatrixId": "w_pr"
+  },
+  {
+    "code": "hist",
+    "nameDe": "Geschichte/Archäologie",
+    "nameEn": "History",
+    "correlationMatrixId": "w_hist"
+  },
+  {
+    "code": "soci",
+    "nameDe": "Sozialarbeit",
+    "nameEn": "Social Work",
+    "correlationMatrixId": "w_soci"
+  },
+  {
+    "code": "medte",
+    "nameDe": "Medizintechnik",
+    "nameEn": "Medical Technology",
+    "correlationMatrixId": "w_medte"
+  },
+  {
+    "code": "stone",
+    "nameDe": "Steinbearbeitung",
+    "nameEn": "Stone Working",
+    "correlationMatrixId": "w_stone"
+  },
+  {
+    "code": "ana",
+    "nameDe": "Business Analysis",
+    "nameEn": "Business Analysis",
+    "correlationMatrixId": "w_ana"
+  },
+  {
+    "code": "secu",
+    "nameDe": "Sicherheits-/Schutzdienste",
+    "nameEn": "Security Services",
+    "correlationMatrixId": "w_secu"
+  },
+  {
+    "code": "klifo",
+    "nameDe": "Klinische Forschung",
+    "nameEn": "Clinical Research",
+    "correlationMatrixId": "w_klifo"
+  },
+  {
+    "code": "bank",
+    "nameDe": "Bankwesen",
+    "nameEn": "Banking",
+    "correlationMatrixId": "w_bank"
+  },
+  {
+    "code": "sete",
+    "nameDe": "Service-Technik",
+    "nameEn": "Service Technic",
+    "correlationMatrixId": "w_sete"
+  },
+  {
+    "code": "food",
+    "nameDe": "Nahrungsmittelproduktion",
+    "nameEn": "Food Production",
+    "correlationMatrixId": "w_food"
+  },
+  {
+    "code": "advoc",
+    "nameDe": "Rechtsanwaltswesen",
+    "nameEn": "Jurist",
+    "correlationMatrixId": "w_advoc"
+  },
+  {
+    "code": "dbde",
+    "nameDe": "Datenbankentwicklung",
+    "nameEn": "Database Development",
+    "correlationMatrixId": "w_dbde"
+  },
+  {
+    "code": "audit",
+    "nameDe": "Wirtschaftsprüfung",
+    "nameEn": "Auditing/Assurance",
+    "correlationMatrixId": "w_audit"
+  },
+  {
+    "code": "dwh",
+    "nameDe": "Datawarehousing",
+    "nameEn": "Datawarehousing",
+    "correlationMatrixId": "w_dwh"
+  },
+  {
+    "code": "deli",
+    "nameDe": "Paket- und Zustelldienste",
+    "nameEn": "Delivery Services",
+    "correlationMatrixId": "w_deli"
+  },
+  {
+    "code": "whkig",
+    "nameDe": "Kindergarten/-erziehung",
+    "nameEn": "Kindergarten & Teaching",
+    "correlationMatrixId": "w_whkig"
+  },
+  {
+    "code": "proce",
+    "nameDe": "Prozessmanagement",
+    "nameEn": "Process Management",
+    "correlationMatrixId": "w_proce"
+  },
+  {
+    "code": "energ",
+    "nameDe": "Energietechnik",
+    "nameEn": "Power Engineering",
+    "correlationMatrixId": "w_energ"
+  },
+  {
+    "code": "insu",
+    "nameDe": "Versicherungswesen",
+    "nameEn": "Insurance Science",
+    "correlationMatrixId": "w_insu"
+  },
+  {
+    "code": "nwde",
+    "nameDe": "Netzwerkentwicklung",
+    "nameEn": "Network Development",
+    "correlationMatrixId": "w_nwde"
+  },
+  {
+    "code": "whole",
+    "nameDe": "Großhandel",
+    "nameEn": "Wholesale",
+    "correlationMatrixId": "w_whole"
+  },
+  {
+    "code": "pm",
+    "nameDe": "Projektmanagement",
+    "nameEn": "Project Management",
+    "correlationMatrixId": "w_pm"
+  },
+  {
+    "code": "hw",
+    "nameDe": "Hardwaretechnik",
+    "nameEn": "Hardware Engineering",
+    "correlationMatrixId": "w_hw"
+  },
+  {
+    "code": "train",
+    "nameDe": "Betriebliche Weiterbildung",
+    "nameEn": "Vocational Education",
+    "correlationMatrixId": "w_train"
+  },
+  {
+    "code": "secr",
+    "nameDe": "Sekretariat",
+    "nameEn": "Secretariat",
+    "correlationMatrixId": "w_secr"
+  },
+  {
+    "code": "ass",
+    "nameDe": "Assistenz",
+    "nameEn": "Assistance",
+    "correlationMatrixId": "w_ass"
+  },
+  {
+    "code": "syen",
+    "nameDe": "System Engineering",
+    "nameEn": "System Engineering",
+    "correlationMatrixId": "w_syen"
+  },
+  {
+    "code": "ware",
+    "nameDe": "Lagerhaltung/Warenlogistik",
+    "nameEn": "Warehousing",
+    "correlationMatrixId": "w_ware"
+  },
+  {
+    "code": "fabr",
+    "nameDe": "Industrielle Fertigung/Produktion",
+    "nameEn": "Fabrication",
+    "correlationMatrixId": "w_fabr"
+  },
+  {
+    "code": "swe",
+    "nameDe": "Softwareentwicklung",
+    "nameEn": "Software Development",
+    "correlationMatrixId": "w_swe"
+  },
+  {
+    "code": "stage",
+    "nameDe": "Bühnen-/Licht-/Tontechnik",
+    "nameEn": "Stage Technique/Light Technology/ Audio Engineering",
+    "correlationMatrixId": "w_stage"
+  },
+  {
+    "code": "riskm",
+    "nameDe": "Risikomanagement",
+    "nameEn": "Risk Management",
+    "correlationMatrixId": "w_riskm"
+  },
+  {
+    "code": "scie",
+    "nameDe": "Materialwissenschaft",
+    "nameEn": "Materials Science",
+    "correlationMatrixId": "w_scie"
+  },
+  {
+    "code": "sadm",
+    "nameDe": "Systemadministration",
+    "nameEn": "System Administration",
+    "correlationMatrixId": "w_sadm"
+  },
+  {
+    "code": "phys",
+    "nameDe": "Physik",
+    "nameEn": "Physics",
+    "correlationMatrixId": "w_phys"
+  },
+  {
+    "code": "onlma",
+    "nameDe": "Onlinemarketing",
+    "nameEn": "Direct Marketing",
+    "correlationMatrixId": "w_onlma"
+  },
+  {
+    "code": "cust",
+    "nameDe": "Kundenbetreuung/Kundenservice",
+    "nameEn": "Customer Service",
+    "correlationMatrixId": "w_cust"
+  },
+  {
+    "code": "aana",
+    "nameDe": "Anwendungsanalyse",
+    "nameEn": "Application Analysis",
+    "correlationMatrixId": "w_aana"
+  },
+  {
+    "code": "publ",
+    "nameDe": "Verlagswesen",
+    "nameEn": "Publishing Sector",
+    "correlationMatrixId": "w_publ"
+  },
+  {
+    "code": "aadm",
+    "nameDe": "Anwendungsadministration",
+    "nameEn": "Application Administration",
+    "correlationMatrixId": "w_aadm"
+  },
+  {
+    "code": "tool",
+    "nameDe": "Werkzeugmacher",
+    "nameEn": "Toolmaker",
+    "correlationMatrixId": "w_tool"
+  },
+  {
+    "code": "immo",
+    "nameDe": "Immobilienwesen",
+    "nameEn": "Real Estate",
+    "correlationMatrixId": "w_immo"
+  },
+  {
+    "code": "const",
+    "nameDe": "Konstruktion",
+    "nameEn": "Construction",
+    "correlationMatrixId": "w_const"
+  },
+  {
+    "code": "qm",
+    "nameDe": "Qualitätsmanagement/Test",
+    "nameEn": "Quality Management",
+    "correlationMatrixId": "w_qm"
+  },
+  {
+    "code": "graph",
+    "nameDe": "Grafikdesign",
+    "nameEn": "Graphic Design",
+    "correlationMatrixId": "w_graph"
+  },
+  {
+    "code": "waste",
+    "nameDe": "Abfallwirtschaft",
+    "nameEn": "Waste Management",
+    "correlationMatrixId": "w_waste"
+  },
+  {
+    "code": "music",
+    "nameDe": "Theater/Schauspiel/Musik/Tanz",
+    "nameEn": "Theater/Music/Dancing",
+    "correlationMatrixId": "w_music"
+  },
+  {
+    "code": "plant",
+    "nameDe": "Anlagenbau",
+    "nameEn": "Plant Engineering",
+    "correlationMatrixId": "w_plant"
+  },
+  {
+    "code": "sport",
+    "nameDe": "Sport/Fitness",
+    "nameEn": "Sport/Fitness",
+    "correlationMatrixId": "w_sport"
+  },
+  {
+    "code": "emb",
+    "nameDe": "Embedded Systems/Firmware Entwicklung",
+    "nameEn": "Embedded Systems/Firmwarwe Development",
+    "correlationMatrixId": "w_emb"
+  },
+  {
+    "code": "bibl",
+    "nameDe": "Bibliothekswesen",
+    "nameEn": "Librarianship",
+    "correlationMatrixId": "w_bibl"
+  },
+  {
+    "code": "busan",
+    "nameDe": "Business Development",
+    "nameEn": "Business Development",
+    "correlationMatrixId": "w_busan"
+  },
+  {
+    "code": "relig",
+    "nameDe": "Religiöse Tätigkeiten",
+    "nameEn": "Spiritual Welfare",
+    "correlationMatrixId": "w_relig"
+  },
+  {
+    "code": "sectr",
+    "nameDe": "Wertpapierhandel",
+    "nameEn": "Security Trading",
+    "correlationMatrixId": "w_sectr"
+  },
+  {
+    "code": "mark",
+    "nameDe": "Marketing",
+    "nameEn": "Marketing",
+    "correlationMatrixId": "w_mark"
+  },
+  {
+    "code": "anim",
+    "nameDe": "Tierhaltung/-pflege/-betreuung",
+    "nameEn": "Animal Keeping",
+    "correlationMatrixId": "w_anim"
+  },
+  {
+    "code": "lab",
+    "nameDe": "Laborarbeit",
+    "nameEn": "Labor",
+    "correlationMatrixId": "w_lab"
+  },
+  {
+    "code": "optic",
+    "nameDe": "Optik",
+    "nameEn": "Optic",
+    "correlationMatrixId": "w_optic"
+  },
+  {
+    "code": "textil",
+    "nameDe": "Textilherstellung",
+    "nameEn": "Textile Production",
+    "correlationMatrixId": "w_textil"
+  },
+  {
+    "code": "acco",
+    "nameDe": "Rechnungswesen",
+    "nameEn": "Accountancy",
+    "correlationMatrixId": "w_acco"
+  },
+  {
+    "code": "itcon",
+    "nameDe": "IT-Consulting",
+    "nameEn": "IT Consulting",
+    "correlationMatrixId": "w_itcon"
+  }
+]
