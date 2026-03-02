@@ -3,6 +3,7 @@ from pathlib import Path
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 # ──────────────────────────────────────────────
 # Constants
@@ -59,7 +60,7 @@ def print_data_summary(fields: list[dict]) -> None:
     print("\nAll codes and matrix IDs are unique.")
 
 
-def compute_semantic_similarity(fields):
+def compute_semantic_similarity(fields: list[dict]) -> np.ndarray:
     """
     Semantic similarity via multilingual sentence embeddings.
 
@@ -88,7 +89,7 @@ def compute_semantic_similarity(fields):
     print(f"  Value range: [{sim_matrix.min():.4f}, {sim_matrix.max():.4f}]")
 
     # Sanity check for top 3 most similar pairs for 3 different fields
-    print('\n Check top 3 most similar pairs for 3 different fields:')
+    print('\n Check top 3 most similar pairs for 3 sample fields:')
     for idx in [0, 4, 8]:
         scores = sim_matrix[idx].copy()
         scores[idx] = -1  # exclude self
@@ -98,7 +99,52 @@ def compute_semantic_similarity(fields):
             f"{fields[j]['nameEn']} ({scores[j]:.3f})" for j in top_3_indices
         )
         print(f"    {field_name} → {neighbors}")
-    return None
+    return sim_matrix
+
+
+def compute_lexical_similarity(fields: list[dict]) -> np.ndarray:
+    """
+    Lexical similarity via TF-IDF.
+
+    Complements semantic embeddings by directly measuring keyword overlap.
+    Using both German and English names gives a richer vocabulary,
+    compound German words (e.g., "Personalentwicklung") add unique tokens
+    that help distinguish HR-related fields from others.
+    """
+    print("Computing lexical similarity (TF-IDF)")
+
+    # Combine DE + EN names as a single "document" per field
+    texts = [f"{f['nameDe']} {f['nameEn']}" for f in fields]
+    print(f"  Sample input: \"{texts[0]}\"")
+
+    vectorizer = TfidfVectorizer(
+        analyzer="word",          # tokenize by words (not characters)
+        lowercase=True,           # "IT" and "it" are the same
+        sublinear_tf=True,        # use 1+log(tf) instead of raw count
+        token_pattern=r"(?u)\b\w+\b",  # also captures single-char words
+    )
+    tfidf_matrix = vectorizer.fit_transform(texts)
+
+    print(f"  Vocabulary size: {len(vectorizer.vocabulary_)}")
+    print(f"  TF-IDF matrix shape: {tfidf_matrix.shape}")
+
+    sim_matrix = cosine_similarity(tfidf_matrix)
+
+    print(f"  Similarity value range: [{sim_matrix.min():.4f}, {sim_matrix.max():.4f}]")
+
+    print("\n  Sanity check for top 3 most similar for 3 sample fields:")
+    for idx in [0, 4, 8]:
+        scores = sim_matrix[idx].copy()
+        scores[idx] = -1  # exclude self
+        top3_indices = np.argsort(scores)[-3:][::-1]
+        field_name = fields[idx]["nameEn"]
+        neighbors = ", ".join(
+            f"{fields[j]['nameEn']} ({scores[j]:.3f})" for j in top3_indices
+        )
+        print(f"    {field_name:30s} → {neighbors}")
+
+    print()
+    return sim_matrix
 
 
 # ──────────────────────────────────────────────
@@ -118,7 +164,8 @@ def main() -> None:
     print("Computing similarity signals")
     print("=" * 70 + "\n")
 
-    compute_semantic_similarity(fields)
+    sim_matrix = compute_semantic_similarity(fields)
+    sim_lexical = compute_lexical_similarity(fields)
 
 
 if __name__ == "__main__":
