@@ -146,7 +146,68 @@ def compute_morphological_similarity(fields: list[dict]) -> np.ndarray:
         neighbors = ", ".join(
             f"{fields[j]['nameEn']} ({scores[j]:.3f})" for j in top3_indices
         )
-        print(f"    {field_name:30s} → {neighbors}")
+        print(f"    {field_name} → {neighbors}")
+
+    print()
+    return sim_matrix
+
+
+def compute_neighborhood_similarity(
+    fields: list[dict], sim_semantic: np.ndarray, k: int = 14
+) -> np.ndarray:
+    """
+    Second-order (structural) similarity via k-NN neighborhood overlap.
+
+    Instead of measuring direct similarity between two fields, this measures
+    how much their local neighborhoods overlap. Two fields that share many
+    nearest neighbors occupy the same region of the occupational landscape,
+    even if their direct similarity is only moderate.
+
+    Uses Jaccard similarity on the k-nearest-neighbor sets derived from
+    the semantic similarity matrix.
+
+    Args:
+        fields: list of work field dicts
+        sim_semantic: precomputed semantic similarity matrix (180x180)
+        k: neighborhood size (default: 14 ≈ √180, a common heuristic for k-NN neighborhood size)
+    """
+    print(f"Computing neighborhood overlap similarity (k={k})")
+
+    n = len(fields)
+
+    # Step 1: Find k nearest neighbors for each field
+    neighborhoods: list[set[int]] = []
+    for i in range(n):
+        scores = sim_semantic[i].copy()
+        scores[i] = -1  # exclude self
+        top_k_indices = set(np.argsort(scores)[-k:])
+        neighborhoods.append(top_k_indices)
+
+    # Step 2: Compute pairwise Jaccard similarity on neighbor sets
+    sim_matrix = np.zeros((n, n))
+    for i in range(n):
+        for j in range(i, n):
+            if i == j:
+                sim_matrix[i][j] = 1.0
+            else:
+                intersection = len(neighborhoods[i] & neighborhoods[j])
+                union = len(neighborhoods[i] | neighborhoods[j])
+                jaccard = intersection / union if union > 0 else 0.0
+                sim_matrix[i][j] = jaccard
+                sim_matrix[j][i] = jaccard
+
+    print(f"  Value range: [{sim_matrix.min():.4f}, {sim_matrix.max():.4f}]")
+
+    print("\n  Sanity check for top 3 most similar for 3 sample fields:")
+    for idx in [0, 4, 8]:
+        scores = sim_matrix[idx].copy()
+        scores[idx] = -1
+        top3_indices = np.argsort(scores)[-3:][::-1]
+        field_name = fields[idx]["nameEn"]
+        neighbors = ", ".join(
+            f"{fields[j]['nameEn']} ({scores[j]:.3f})" for j in top3_indices
+        )
+        print(f"    {field_name} → {neighbors}")
 
     print()
     return sim_matrix
@@ -169,8 +230,9 @@ def main() -> None:
     print("Computing similarity signals")
     print("=" * 70 + "\n")
 
-    sim_matrix = compute_semantic_similarity(fields)
+    sim_semantic = compute_semantic_similarity(fields)
     sim_morphological = compute_morphological_similarity(fields)
+    sim_neighborhood = compute_neighborhood_similarity(fields, sim_semantic)
 
 
 if __name__ == "__main__":
